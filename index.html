@@ -4,12 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Remplissez et imprimez facilement votre formulaire DAS CNAS en ligne." />
-  <title>Logiciel DAS CNAS - version web</title>
+  <title>Logiciel DAS CNAS Agérie- version web</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>DAS CNAS Web</h1>
-  <p>La version WEB du logiciel Déclaration Annuelle des Salaires (DAS) de la CNAS.</p>
+
+  <header>
+    <h1>Logiciel DAS CNAS Web</h1>
+    <p>La version WEB du logiciel Déclaration Annuelle des Salaires (DAS) de la CNAS Algérie.</p>
+  </header>
+
+  <div class="e-form-container">
+    <div class="e-title"><h2>Employeur</h2></div>
+    <form>
+      <div class="form-row">
+        <!-- Left -->
+        <div class="column">
+          <div>
+            <label for="numero-employeur">Numéro employeur</label>
+            <input type="number" id="numero-employeur" name="numero-employeur" required>
+          </div>
+          <div>
+            <label for="denomination">Dénomination</label>
+            <input type="text" id="denomination" name="denomination" required>
+          </div>
+          <div>
+            <label for="raison-sociale">Raison sociale</label>
+            <input type="text" id="raison-sociale" name="raison-sociale">
+          </div>
+          <div>
+            <label for="adresse">Adresse</label>
+            <input type="text" id="adresse" name="adresse">
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="column">
+          <div>
+            <label for="annee-reference">Année référence</label>
+            <input type="number" id="annee-reference" name="annee-reference">
+          </div>
+          <div>
+            <label for="type-declaration">Type de déclaration</label>
+            <select id="type-declaration" name="type-declaration">
+              <option value="normal">Normal</option>
+              <option value="complementaire">Complémentaire</option>
+              <option value="regularisation">Régularisation</option>
+            </select>
+          </div>
+          <div>
+            <label for="date-depot">Date dépôt</label>
+            <input type="date" id="date-depot" name="date-depot" >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
 
   <script src="app.js"></script>
 </body>
