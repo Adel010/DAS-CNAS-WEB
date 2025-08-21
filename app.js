@@ -48,7 +48,7 @@ function addLine() {
             <td><button class="del-btn" id="${lineCount}">Sup. Ligne</button></td>
           </tr>`;
     
-    tb.innerHTML += lineHTML;
+    tb.insertAdjacentHTML('beforeend',lineHTML);
     addListnerToDelBtn();
 }
 
@@ -57,31 +57,55 @@ addLineBtn.addEventListener("click", addLine);
 // Delete existing line on Salariés table
 
 function lineNumRefresh(){
-    lineCount--;
-    for(i = 1; i <= lineCount; i++){
-        const j = document.getElementById("line-n" + i);
-        if(!j){
-            const k = document.getElementById("line-n" + (i+1));
-            k.value = i;
-            k.id = "line-n" + i;
-        }
-    }
+  for(i = 1; i <= lineCount; i++){
+      const linearCurrentLine = document.getElementById("line-" + i);
+      // Change Line ID only If the incremental counting is interrupted
+      if(!linearCurrentLine) {        
+        const jumpLine = document.getElementById("line-" + (i+1));
+        const inputLineNum = document.getElementById("line-n" + (i+1));
+        const delLineBtn = document.getElementById(i+1);
+        
+        inputLineNum.value = i;
+        inputLineNum.id = "line-n" + i;
+        jumpLine.id = "line-" + i;
+        delLineBtn.id = i; 
+      }
+  }
 };
 
 function deleteLine (line) {
     const targetLine = document.getElementById("line-" + line);
     tb.removeChild(targetLine);
+    lineCount--;
     lineNumRefresh();
     addListnerToDelBtn();
 };
 
+const delBtnHandlersList = {};
+
 function addListnerToDelBtn () {
     for (let i = 1; i <= lineCount; i++){
         let j = document.getElementById(i);
-        j.addEventListener("click", () => {
-            deleteLine(i)
-        })
-    }
+        // Remove prev handler if exists to avoid multiple Lines removal at one click
+        if(delBtnHandlersList[i]) {
+          j.removeEventListener("click", delBtnHandlersList[i]);
+        }
+        // Creat and store new handler
+        delBtnHandlersList[i] = () => {deleteLine(i)};
+        j.addEventListener("click", delBtnHandlersList[i])
+      }
+      console.log(delBtnHandlersList);
+      
 };
 
 addListnerToDelBtn();
+
+// ALT WAY | TRY LATER
+
+// function listenDelBtn (id) {
+//   const elem = document.getElementById(id);
+//   elem.addEventListener("click", ()=>{
+//     elem.parentElement.parentElement.remove();
+//     lineNumRefresh();
+//   })
+// }
