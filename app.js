@@ -15,37 +15,37 @@ function addLine() {
     lineCount++;
     const lineHTML = `<tr id="line-${lineCount}">
             <td><input type="number" name="line-n" id="line-n${lineCount}" value="${lineCount}" min="1" max="99" readonly></td>
-            <td><input type="number" name="n-ss" id="n-ss"></td>
-            <td><input type="date" name="bd" id="bd" ></td>
-            <td><input type="text" name="f-name" id="f-name"></td>
-            <td><input type="text" name="l-name" id="l-name"></td>
-            <td><input type="number" name="d-t1" id="d-t1" max="90" min="1"></td>
-            <td><select name="du-t1" id="du-t1">
+            <td><input type="number" name="n-ss" id="n-ss-l${lineCount}"></td>
+            <td><input type="date" name="bd" id="bd-l${lineCount}" ></td>
+            <td><input type="text" name="f-name" id="f-name-l${lineCount}"></td>
+            <td><input type="text" name="l-name" id="l-name-l${lineCount}"></td>
+            <td><input type="number" name="d-t1" id="d-t1-l${lineCount}" max="90" min="1"></td>
+            <td><select name="du-t1" id="du-t1-l${lineCount}">
               <option value="M">M</option>
               <option value="J">J</option>
             </select></td>
-            <td><input type="number" name="amount-t1" id="amount-t1"></td>
-            <td><input type="number" name="d-t2" id="d-t2" max="90" min="1"></td>
-            <td><select name="du-t2" id="du-t2">
+            <td><input type="number" name="amount-t1" id="amount-t1-l${lineCount}"></td>
+            <td><input type="number" name="d-t2" id="d-t2-l${lineCount}" max="90" min="1"></td>
+            <td><select name="du-t2" id="du-t2-l${lineCount}">
               <option value="M">M</option>
               <option value="J">J</option>
             </select></td>
-            <td><input type="number" name="amount-t2" id="amount-t2"></td>
-            <td><input type="number" name="d-t3" id="d-t3" max="90" min="1"></td>
-            <td><select name="du-t3" id="du-t3">
+            <td><input type="number" name="amount-t2" id="amount-t2-l${lineCount}"></td>
+            <td><input type="number" name="d-t3" id="d-t3-l${lineCount}" max="90" min="1"></td>
+            <td><select name="du-t3" id="du-t3-l${lineCount}">
               <option value="M">M</option>
               <option value="J">J</option>
             </select></td>
-            <td><input type="number" name="amount-t3" id="amount-t3"></td>
-            <td><input type="number" name="d-t4" id="d-t4" max="90" min="1"></td>
-            <td><select name="du-t4" id="du-t4">
+            <td><input type="number" name="amount-t3" id="amount-t3-l${lineCount}"></td>
+            <td><input type="number" name="d-t4" id="d-t4-l${lineCount}" max="90" min="1"></td>
+            <td><select name="du-t4" id="du-t4-l${lineCount}">
               <option value="M">M</option>
               <option value="J">J</option>
             </select></td>
-            <td><input type="number" name="amount-t4" id="amount-t4"></td>
-            <td><input type="number" name="general-amount" id="general-amount" readonly></td>
-            <td><input type="date" name="e-date" id="e-date"></td>
-            <td><input type="date" name="s-date" id="s-date"></td>
+            <td><input type="number" name="amount-t4" id="amount-t4-l${lineCount}"></td>
+            <td><input type="number" name="general-amount" id="general-amount-l${lineCount}" readonly></td>
+            <td><input type="date" name="e-date" id="e-date-l${lineCount}"></td>
+            <td><input type="date" name="s-date" id="s-date-l${lineCount}"></td>
             <td><button class="del-btn" id="${lineCount}">Sup. Ligne</button></td>
           </tr>`;
     
