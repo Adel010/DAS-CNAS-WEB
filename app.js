@@ -6,6 +6,7 @@ document.getElementById("date-depot").value = String(today.getFullYear()) + "-" 
 
 let lineCount = 1;
 const tb = document.getElementById("st-body");
+
 // Add new line on Salariés table
 
 const addLineBtn = document.getElementById("add-line");
@@ -49,12 +50,12 @@ function addLine() {
           </tr>`;
     
     tb.insertAdjacentHTML('beforeend',lineHTML);
-    addListnerToDelBtn();
+    listenDelBtn(lineCount);
 }
 
 addLineBtn.addEventListener("click", addLine);
 
-// Delete existing line on Salariés table
+// Refeching lines numbers count when a line has been deleted
 
 function lineNumRefresh(){
   for(i = 1; i <= lineCount; i++){
@@ -73,39 +74,17 @@ function lineNumRefresh(){
   }
 };
 
-function deleteLine (line) {
-    const targetLine = document.getElementById("line-" + line);
-    tb.removeChild(targetLine);
+// Delete existing line on Salariés table
+
+function listenDelBtn (id) {
+  const btn = document.getElementById(id);
+  btn.addEventListener("click", ()=>{
+    // Getting the associated Line (TR) to the clicked BTN by using CLOSEST() method
+    const line = btn.closest("tr");
+    line.remove();
     lineCount--;
     lineNumRefresh();
-    addListnerToDelBtn();
-};
+  })
+}
 
-const delBtnHandlersList = {};
-
-function addListnerToDelBtn () {
-    for (let i = 1; i <= lineCount; i++){
-        let j = document.getElementById(i);
-        // Remove prev handler if exists to avoid multiple Lines removal at one click
-        if(delBtnHandlersList[i]) {
-          j.removeEventListener("click", delBtnHandlersList[i]);
-        }
-        // Creat and store new handler
-        delBtnHandlersList[i] = () => {deleteLine(i)};
-        j.addEventListener("click", delBtnHandlersList[i])
-      }
-      console.log(delBtnHandlersList);
-      
-};
-
-addListnerToDelBtn();
-
-// ALT WAY | TRY LATER
-
-// function listenDelBtn (id) {
-//   const elem = document.getElementById(id);
-//   elem.addEventListener("click", ()=>{
-//     elem.parentElement.parentElement.remove();
-//     lineNumRefresh();
-//   })
-// }
+listenDelBtn(1);
